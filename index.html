@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CreateKit – Free browser tools</title>
+  <meta name="description" content="Free tools that run in your browser. No account. Your files stay on your device." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <a href="#home" class="logo">&gt;_ create<span>kit</span></a>
+    <a href="https://gaurabdev.com" target="_blank" rel="noopener" class="link">gaurabdev.com</a>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <h1>Your everyday toolkit,<br /><span>running on your device</span></h1>
+      <p>Free tools for files, images, text and dates. No account. Your files never leave your browser.</p>
+      <input id="search" type="search" placeholder="Search tools…" />
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <!-- QR -->
+    <section id="qr" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>QR Code Generator</h2>
+      <label>Text or link<input id="qrText" value="https://gaurabdev.com" /></label>
+      <div class="row">
+        <label>Color<input id="qrColor" type="color" value="#000000" /></label>
+        <label>Background<input id="qrBg" type="color" value="#ffffff" /></label>
+        <label>Size<select id="qrSize"><option>256</option><option selected>512</option><option>1024</option></select></label>
+      </div>
+      <canvas id="qrCanvas" class="preview"></canvas>
+      <button id="qrDl">Download PNG</button>
+    </section>
+
+    <!-- MP3 -->
+    <section id="mp3" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>MP4 to MP3</h2>
+      <input id="mp3File" type="file" accept="video/*,audio/*" />
+      <label>Quality<select id="mp3Rate"><option>128</option><option selected>192</option><option>320</option></select></label>
+      <button id="mp3Go">Convert to MP3</button>
+      <p id="mp3Status" class="muted"></p>
+      <audio id="mp3Audio" controls hidden></audio>
+    </section>
+
+    <!-- BG -->
+    <section id="bg" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>Background Remover</h2>
+      <input id="bgFile" type="file" accept="image/*" />
+      <p class="muted">The first run downloads the AI model (about 40 MB).</p>
+      <button id="bgGo">Remove background</button>
+      <p id="bgStatus" class="muted"></p>
+      <img id="bgOut" class="preview checker" hidden alt="Result" />
+    </section>
+
+    <!-- Image -->
+    <section id="img" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>Image Converter &amp; Compressor</h2>
+      <input id="imgFile" type="file" accept="image/*" />
+      <div class="row">
+        <label>Format<select id="imgFmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp" selected>WEBP</option></select></label>
+        <label>Quality <b id="imgQv">80</b>%<input id="imgQ" type="range" min="10" max="100" value="80" /></label>
+        <label>Max width<input id="imgW" type="number" placeholder="original" /></label>
+      </div>
+      <button id="imgGo">Convert</button>
+      <p id="imgStatus" class="muted"></p>
+    </section>
+
+    <!-- Password -->
+    <section id="pw" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>Password Generator</h2>
+      <div class="out" id="pwOut"></div>
+      <label>Length <b id="pwLv">20</b><input id="pwLen" type="range" min="4" max="64" value="20" /></label>
+      <div class="checks">
+        <label><input type="checkbox" id="pwLower" checked /> a–z</label>
+        <label><input type="checkbox" id="pwUpper" checked /> A–Z</label>
+        <label><input type="checkbox" id="pwDigits" checked /> 0–9</label>
+        <label><input type="checkbox" id="pwSym" checked /> !@#</label>
+      </div>
+      <button id="pwNew">New password</button>
+      <button id="pwCopy" class="ghost">Copy</button>
+    </section>
+
+    <!-- Words -->
+    <section id="words" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>Word Counter</h2>
+      <textarea id="wText" rows="8" placeholder="Type or paste text…"></textarea>
+      <div class="stats" id="wStats"></div>
+    </section>
+
+    <!-- PDF -->
+    <section id="pdf" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>PDF Merge &amp; Split</h2>
+      <h3>Merge</h3>
+      <input id="pdfMerge" type="file" accept="application/pdf" multiple />
+      <button id="pdfMergeGo">Merge PDFs</button>
+      <h3>Split</h3>
+      <input id="pdfSplit" type="file" accept="application/pdf" />
+      <label>Page ranges (e.g. 1-3, 5, 8-)<input id="pdfRanges" placeholder="1-3, 5" /></label>
+      <button id="pdfSplitGo">Split</button>
+      <p id="pdfStatus" class="muted"></p>
+    </section>
+
+    <!-- Age -->
+    <section id="age" class="tool">
+      <a href="#home" class="back">← all tools</a><h2>Age &amp; Date Calculator</h2>
+      <div class="row">
+        <label>Birth date<input id="aFrom" type="date" value="2000-01-01" /></label>
+        <label>Until<input id="aTo" type="date" /></label>
+      </div>
+      <div class="stats" id="aStats"></div>
+      <h3>Add days</h3>
+      <div class="row">
+        <label>Start<input id="dStart" type="date" /></label>
+        <label>Days<input id="dDays" type="number" value="30" /></label>
+      </div>
+      <p id="dOut" class="big"></p>
+    </section>
+  </main>
+
+  <footer>Files are processed on your device · Made by Gaurab Pantha</footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
